@@ -1,0 +1,984 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>vulkan-compute</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="ch00-00-foreword.html">Foreword</a></li><li class="chapter-item expanded affix "><a href="ch01-00-introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="ch02-00-getting-started.html"><strong aria-hidden="true">1.</strong> Getting started</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch02-01-installation.html"><strong aria-hidden="true">1.1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="ch02-02-setup.html"><strong aria-hidden="true">1.2.</strong> Setup</a></li><li class="chapter-item expanded "><a href="ch02-03-glsl.html"><strong aria-hidden="true">1.3.</strong> GLSL</a></li></ol></li><li class="chapter-item expanded "><a href="ch03-00-helloWorld.html"><strong aria-hidden="true">2.</strong> Hello World!</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-setup.html"><strong aria-hidden="true">2.1.</strong> Setup</a></li><li class="chapter-item expanded "><a href="ch03-02-instance.html"><strong aria-hidden="true">2.2.</strong> Creating an instance</a></li><li class="chapter-item expanded "><a href="ch03-03-physicalDevice.html"><strong aria-hidden="true">2.3.</strong> Getting a physical device</a></li><li class="chapter-item expanded "><a href="ch03-04-logicalDevice.html"><strong aria-hidden="true">2.4.</strong> Creating a logical device</a></li><li class="chapter-item expanded "><a href="ch03-05-createBuffer.html"><strong aria-hidden="true">2.5.</strong> Creating a buffer</a></li><li class="chapter-item expanded "><a href="ch03-06-fillBuffer.html"><strong aria-hidden="true">2.6.</strong> Filling a buffer</a></li><li class="chapter-item expanded "><a href="ch03-07-descriptorSetLayout.html"><strong aria-hidden="true">2.7.</strong> Creating a descriptor set layout</a></li><li class="chapter-item expanded "><a href="ch03-08-descriptorSet.html"><strong aria-hidden="true">2.8.</strong> Creating a descriptor set</a></li><li class="chapter-item expanded "><a href="ch03-09-computePipeline.html"><strong aria-hidden="true">2.9.</strong> Creating a compute pipeline</a></li><li class="chapter-item expanded "><a href="ch03-10-commandBuffer.html"><strong aria-hidden="true">2.10.</strong> Creating a command buffer</a></li><li class="chapter-item expanded "><a href="ch03-11-running.html"><strong aria-hidden="true">2.11.</strong> Running a command buffer</a></li><li class="chapter-item expanded "><a href="ch03-12-reading.html"><strong aria-hidden="true">2.12.</strong> Reading a buffer</a></li><li class="chapter-item expanded "><a href="ch03-13-testing.html"><strong aria-hidden="true">2.13.</strong> Testing</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">3.</strong> BLAS Level 1</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> BLAS Level 2</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> BLAS Level 3</div></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">vulkan-compute</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="foreword"><a class="header" href="#foreword">Foreword</a></h1>
+<h1 id="credit"><a class="header" href="#credit">Credit</a></h1>
+<p>A couple resources I found useful:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Lp1ifh9TuFI">Introduction to Google Test and CMAKE</a></li>
+<li><a href="https://vulkan-tutorial.com/">Vulkan Tutorial</a></li>
+<li><a href="https://github.com/PacktPublishing/Vulkan-Cookbook">Vulkan Cookbook</a></li>
+<li><a href="https://github.com/Erkaman/vulkan_minimal_compute">vulkan_minimal_compute</a></li>
+</ul>
+<h1 id="feedback"><a class="header" href="#feedback">Feedback</a></h1>
+<p>I am by no means an expert, so any and all feedback is welcome.</p>
+<p>Drop an issue or pull request on <a href="">the GitHub repo</a>, if that doesn't fit your feedback feel free to email me at <code>jonathanwoollettlight@gmail.com</code>.</p>
+<h1 id="coding-style"><a class="header" href="#coding-style">Coding style</a></h1>
+<p>I will use default parameters. </p>
+<h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>Welcome to <em>Vulkan Compute</em>, an introductory book on <a href="https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units">GPGPU</a> with Vulkan.</p>
+<h2 id="who-this-book-is-for"><a class="header" href="#who-this-book-is-for">Who this book is for?</a></h2>
+<p>This book is for anyone who wants to understand the low-level(ish) components of making really fast code.</p>
+<h2 id="how-is-this-book-structured"><a class="header" href="#how-is-this-book-structured">How is this book structured?</a></h2>
+<p>This book follows a progression of explaining projects with continuously increasing complexity.</p>
+<p>Through these project will aspects of Vulkan be explained.</p>
+<h1 id="getting-started"><a class="header" href="#getting-started">Getting started</a></h1>
+<p>Let us start down this arduous path.</p>
+<p>Before continuing you should have a decent understanding of <a href="https://en.wikipedia.org/wiki/C++">C++</a>.</p>
+<p>In this chapter I will discuss:</p>
+<ul>
+<li>Setting up a <a href="https://cmake.org/">CMAKE</a> Vulkan project with <a href="https://github.com/google/googletest">GoogleTest</a>.</li>
+</ul>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<p>I expect you may have much of what I suggest here already installed, as such you may be able to skip this section.</p>
+<p>There are always alternatives, I simply note the way I went about it.</p>
+<h3 id="c-with-a-hrefhttpsenwikipediaorgwikignu_compiler_collectiongcca-via-a-hrefhttpsmingworgmingwa"><a class="header" href="#c-with-a-hrefhttpsenwikipediaorgwikignu_compiler_collectiongcca-via-a-hrefhttpsmingworgmingwa">C++ with <a href="https://en.wikipedia.org/wiki/GNU_Compiler_Collection">GCC</a> via <a href="https://mingw.org">MinGW</a></a></h3>
+<h3 id="a-hrefhttpscmakeorgdownloadcmakea"><a class="header" href="#a-hrefhttpscmakeorgdownloadcmakea"><a href="https://cmake.org/download/">CMake</a></a></h3>
+<p>To make a cross platform project.</p>
+<p>Go to <a href="https://cmake.org/download/">https://cmake.org/download/</a> and download &amp; install the appropriate version of CMake for your system.</p>
+<h3 id="a-hrefhttpswwwlunargcomvulkan-sdkvulkan-sdka"><a class="header" href="#a-hrefhttpswwwlunargcomvulkan-sdkvulkan-sdka"><a href="https://www.lunarg.com/vulkan-sdk/">Vulkan SDK</a></a></h3>
+<p>To access the Vulkan API.</p>
+<p>Go to <a href="https://vulkan.lunarg.com/sdk/home">https://vulkan.lunarg.com/sdk/home</a> and download &amp; install the appropriate version of the Vulkan SDK for your system.</p>
+<h3 id="a-hrefhttpsgithubcomkhronosgroupspirv-toolsspirv-toolsa"><a class="header" href="#a-hrefhttpsgithubcomkhronosgroupspirv-toolsspirv-toolsa"><a href="https://github.com/KhronosGroup/SPIRV-Tools">SPIRV-Tools</a></a></h3>
+<p>To compile GLSL into SPIR-V.</p>
+<p>Go to <a href="https://github.com/KhronosGroup/SPIRV-Tools/blob/master/docs/downloads.md">this GitHub link</a> and download &amp; install the appropriate version for your system.</p>
+<blockquote>
+<p>Note: This is not required and only recommended as Vulkan SDK often does not have the most recent versions of the SPIRV-Tools.</p>
+</blockquote>
+<h2 id="setup"><a class="header" href="#setup">Setup</a></h2>
+<blockquote>
+<p>Note: This is written for specifically using Visual Studio code, you need not use this editor.</p>
+</blockquote>
+<p>You may already be familiar with what I cover in this section.</p>
+<h3 id="boilerplate"><a class="header" href="#boilerplate">Boilerplate</a></h3>
+<p>To begin <a href="https://github.com/JonathanWoollett-Light/vulkan-boilerplate">clone this</a> and edit <code>.gitignore</code> for your specific case.</p>
+<h3 id="visual-studio-code"><a class="header" href="#visual-studio-code">Visual Studio Code</a></h3>
+<p>Useful extensions:</p>
+<ul>
+<li>GLSL Lint</li>
+<li>C/C++</li>
+<li>CMake Tools</li>
+<li>CMake</li>
+</ul>
+<p>On opening the boilerplate project you may be prompted to select a kit to use, if you do not select by this prompt there should be a section in the bottom bar saying 'No Kit Selected' which you must click and select a kit from the given list (you may use GCC).</p>
+<p>To confirm setup has succeeded run ctest (this can be done via the ctest button on the bottom). </p>
+<h2 id="glsl"><a class="header" href="#glsl">GLSL</a></h2>
+<p>GLSL programs are typically referred to as shaders (and sometimes kernels), when used for compute it it typical to use the <code>.comp</code> extension.</p>
+<p>The GLSL in <a href="ch03-00-helloWorld.html">the Hello World project</a>:</p>
+<pre><code class="language-glsl">#version 450
+
+layout(local_size_x = 1024, local_size_y = 1, local_size_z = 1) in;
+
+layout(binding = 0) buffer Buffer {
+    uint x[]; // u32
+};
+
+void main() {
+    uint indx = gl_GlobalInvocationID.x;
+    x[indx] = indx;
+}
+</code></pre>
+<p>Before use we must compile our GLSL into SPIR-V <code>012.comp</code> → <code>012.spv</code>, there are a few ways to do this.</p>
+<p>The easiest way I simply copy and paste is by running the BASH command:</p>
+<pre><code class="language-bash">for file in glsl/*.comp; do ./glslc.exe &quot;$file&quot; -o &quot;glsl/$(basename &quot;$file&quot; .comp).spv&quot; --target-env=vulkan1.1; done 
+</code></pre>
+<p>Which compiles every <code>.comp</code> in the <code>glsl</code> sub-folder into a respective <code>.spv</code> file using the <code>glslc.exe</code> executable in the current directory, using Vulkan 1.1 as the environment.</p>
+<h1 id="hello-world"><a class="header" href="#hello-world">Hello World!</a></h1>
+<p>While quite a bit more complex than what one might consider a hello world, this project serves the same purpose, it is our introductory project.</p>
+<p>GPU programming in general especially compute is quite a bit more complex than typical programming (arguably unnecessarily).</p>
+<p>The project is to use our device to fill an array with the values of its indices:</p>
+<p><code>[0,0,0,...]</code> → <code>[0,1,2,...]</code></p>
+<p>I expect you may reference the appropriate sections in <a href="https://github.com/JonathanWoollett-Light/vulkan-012">the completed project</a> as you read through this book.</p>
+<p>It is by the nature of this section that we must lightly traverse many elements of Vulkan to get a basic example running; allow yourself a light understanding.</p>
+<p>I will cover topics in growing depth as we naturally require as our desired functionality becomes more complex in future projects.</p>
+<p>For this project I use the <a href="ch02-00-getting-started.html">Getting started</a> project as the starting boilerplate.</p>
+<h2 id="setup-1"><a class="header" href="#setup-1">Setup</a></h2>
+<p>At the top of the following sections I will write:</p>
+<blockquote>
+<p>This section refers to:</p>
+</blockquote>
+<p>Followed by the methods in the completed project this section concerns.</p>
+<h3 id="a-class-and-a-namespace"><a class="header" href="#a-class-and-a-namespace">A class and a namespace</a></h3>
+<p>We will use a class <code>ComputeApp</code> to contain our Vulkan objects and a namespace <code>Utility</code> for our procedures to construct these objects.</p>
+<pre><code class="language-cpp">class ComputeApp {
+    public:
+        ComputeApp();
+        ~ComputeApp();
+}
+namespace Utility {}
+</code></pre>
+<h3 id="result-checking"><a class="header" href="#result-checking">Result checking</a></h3>
+<p>Many Vulkan procedures return a <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkResult.html"><code>VkResult</code></a> object specifying whether the operation was successful, for convenience here I will use a simple macro to check this.</p>
+<pre><code class="language-cpp">#define VK_CHECK_RESULT(f)                                                             \
+{                                                                                      \
+    VkResult res = (f);                                                                \
+    if (res != VK_SUCCESS)                                                             \
+    {                                                                                  \
+        printf(&quot;Fatal : VkResult is %d in %s at line %d\n&quot;, res,  __FILE__, __LINE__); \
+        assert(res == VK_SUCCESS);                                                     \
+    }                                                                                  \
+}
+</code></pre>
+<h2 id="creating-an-instance"><a class="header" href="#creating-an-instance">Creating an instance</a></h2>
+<p>This section refers to:</p>
+<ul>
+<li><code>Utility::createInstance</code></li>
+</ul>
+<p>To begin we create an instance of the Vulkan.</p>
+<p>For now we only need consider 3 parameters:</p>
+<ol>
+<li><strong>Enabled layers:</strong> What validation layers we will enable.</li>
+<li><strong>Enabled extensions:</strong> What feature extensions we will enable.</li>
+<li><strong>API version:</strong> What version of Vulkan we are targeting.</li>
+</ol>
+<p>Validation layers are optional components that hook into Vulkan function calls to apply additional operations, typically (and in this case) for providing debug information.</p>
+<p>We implement the typical validation layer <code>VK_LAYER_KHRONOS_validation</code> and the extension <code>VK_EXT_DEBUG_REPORT</code> to support it, to provide clearer error messages.</p>
+<h3 id="setup-2"><a class="header" href="#setup-2">Setup</a></h3>
+<p>If we are not in debug we do not include validation layers, else we do.</p>
+<pre><code class="language-cpp">#ifdef NDEBUG
+const auto enableValidationLayers = std::nullopt;
+#else
+const auto enableValidationLayers = std::optional&lt;char const*&gt;{&quot;VK_LAYER_KHRONOS_validation&quot;};
+#endif
+</code></pre>
+<p>In our procedure we first define the vectors within which we will store our enabled layers and extensions, and then check if our <code>enableValidationLayers</code> variable contains a value.</p>
+<pre><code class="language-cpp">std::vector&lt;char const*&gt; enabledLayers;
+std::vector&lt;char const*&gt; enabledExtensions;
+
+if (enableValidationLayers.has_value()) {
+    // ...
+}
+</code></pre>
+<p>Before we push our desired layers and extensions it is best to first check they are supported.</p>
+<h3 id="layers"><a class="header" href="#layers">Layers</a></h3>
+<p>Checking and pushing our validation layer:</p>
+<pre><code class="language-cpp">// Gets number of supported layers
+uint32_t layerCount;
+vkEnumerateInstanceLayerProperties(&amp;layerCount, nullptr);
+// Gets all supported layers
+std::vector&lt;VkLayerProperties&gt; layerProperties(layerCount);
+vkEnumerateInstanceLayerProperties(&amp;layerCount, layerProperties.data());
+
+// Check 'VK_LAYER_KHRONOS_validation' is among supported layers
+auto layer_itr = std::find_if(layerProperties.begin(), layerProperties.end(), 
+    [](VkLayerProperties&amp; prop) {
+        return (strcmp(enableValidationLayers.value(), prop.layerName) == 0);
+    }
+);
+// If not, throw error
+if (layer_itr == layerProperties.end()) {
+    throw std::runtime_error(&quot;Validation layer not supported\n&quot;);
+}
+// Else, push to layers
+enabledLayers.push_back(enableValidationLayers.value());
+</code></pre>
+<h3 id="extensions"><a class="header" href="#extensions">Extensions</a></h3>
+<p>Checking and pushing our extension.</p>
+<p><code>std::find_if</code> not used here as it is more typical to require additional extensions and this approach better supports that.</p>
+<pre><code class="language-cpp">// Gets number of supported extensions
+uint32_t extensionCount;
+vkEnumerateInstanceExtensionProperties(nullptr, &amp;extensionCount, nullptr);
+// Gets all supported extensions
+std::vector&lt;VkExtensionProperties&gt; extensionProperties(extensionCount);
+vkEnumerateInstanceExtensionProperties(
+    nullptr, &amp;extensionCount, extensionProperties.data()
+);
+
+// Check `VK_EXT_DEBUG_REPORT` is among supported extensions
+bool debug_report = false;
+for(VkExtensionProperties&amp; prop: extensionProperties) {
+    if (strcmp(VK_EXT_DEBUG_REPORT_EXTENSION_NAME, prop.extensionName) == 0) { 
+        debug_report=true;
+        break;
+    }
+}
+// If not, throw error
+if (!debug_report) {
+    throw std::runtime_error(
+        &quot;Extension VK_EXT_DEBUG_REPORT_EXTENSION_NAME not supported\n&quot;
+    );
+}
+// Else, push to extensions
+enabledExtensions.push_back(VK_EXT_DEBUG_REPORT_EXTENSION_NAME);
+</code></pre>
+<h3 id="api-version"><a class="header" href="#api-version">API version</a></h3>
+<p>To create an instance we need to create a <code>VkInstanceCreateInfo</code> object within which is a <code>VkApplicationInfo</code> object, it is within this object that we set our Vulkan version.</p>
+<p>In the following code we set enabled layer, enabled extensions and the version to <code>VK_API_VERSION_1_1</code> (version 1.1 of Vulkan).</p>
+<pre><code class="language-cpp">VkApplicationInfo applicationInfo = {
+    .apiVersion = VK_API_VERSION_1_1 // Vulkan version
+};
+VkInstanceCreateInfo createInfo = {
+    .pApplicationInfo = &amp;applicationInfo,
+    .enabledLayerCount = static_cast&lt;uint32_t&gt;(enabledLayers.size()),
+    .ppEnabledLayerNames = enabledLayers.data(),
+    .enabledExtensionCount = static_cast&lt;uint32_t&gt;(enabledExtensions.size()),
+    .ppEnabledExtensionNames = enabledExtensions.data()
+};
+</code></pre>
+<h3 id="creating-an-instance-1"><a class="header" href="#creating-an-instance-1">Creating an instance</a></h3>
+<p>We create our instance according to <code>createInfo</code>, store it in <code>instance</code> and check the result via our <code>VK_CHECK_RESULT</code> macro.</p>
+<pre><code class="language-cpp">VK_CHECK_RESULT(vkCreateInstance(
+    &amp;createInfo,
+    nullptr,
+    &amp;instance)
+);
+</code></pre>
+<h2 id="getting-a-physical-device"><a class="header" href="#getting-a-physical-device">Getting a physical device</a></h2>
+<p>This section refers to:</p>
+<ul>
+<li><code>Utility::getPhysicalDevice</code></li>
+</ul>
+<p>Now we need to select the physical device we want to work with.</p>
+<p>In most cases this will by our GPU and our only device.</p>
+<p>In our code we:</p>
+<ol>
+<li>Get the number of physical devices within the system.</li>
+<li>Check it is not 0.</li>
+<li>Get all our physical devices.</li>
+<li>Set the device we will use as our 1st device.</li>
+</ol>
+<pre><code class="language-cpp">// Gets number of physical devices
+uint32_t deviceCount;
+vkEnumeratePhysicalDevices(instance, &amp;deviceCount, nullptr);
+
+// Asserts a system has a device
+assert(deviceCount != 0);
+
+// Gets physical devices
+std::vector&lt;VkPhysicalDevice&gt; devices(deviceCount);
+vkEnumeratePhysicalDevices(instance, &amp;deviceCount, devices.data());
+
+// Picks 1st
+physicalDevice = devices[0];
+</code></pre>
+<p>The <code>assert(deviceCount != 0)</code> while unnecessary, is my preference to check.</p>
+<h2 id="creating-a-logical-device"><a class="header" href="#creating-a-logical-device">Creating a logical device</a></h2>
+<p>This section refers to:</p>
+<ul>
+<li><code>Utility::createDevice</code></li>
+<li><code>Utility::getComputeQueueFamilyIndex</code></li>
+</ul>
+<p>For communicating with a physical device we need a 'logical device', what Vulkan simply names <a href="https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDevice.html"><code>VkDevice</code></a>.</p>
+<p>Each logical device uses a specific queue family to which all commands will be submitted.</p>
+<p>A queue family can be thought of as a group of threads (queues) with shared functionality.</p>
+<p>In our code we:</p>
+<ol>
+<li>Get the index to the 1st compute supporting queue family on our physical device.</li>
+<li>Create a logical device.</li>
+</ol>
+<h3 id="getting-compute-queue-family-index"><a class="header" href="#getting-compute-queue-family-index">Getting compute queue family index</a></h3>
+<pre><code class="language-cpp">uint32_t Utility::getComputeQueueFamilyIndex(VkPhysicalDevice const&amp; physicalDevice) {
+    // Gets number of queue families
+    uint32_t queueFamilyCount;
+    vkGetPhysicalDeviceQueueFamilyProperties(
+        physicalDevice, &amp;queueFamilyCount, nullptr
+    );
+
+    // Gets queue families
+    std::vector&lt;VkQueueFamilyProperties&gt; queueFamilies(queueFamilyCount);
+    vkGetPhysicalDeviceQueueFamilyProperties(
+        physicalDevice, &amp;queueFamilyCount, queueFamilies.data()
+    );
+
+    // Finds 1st queue family which supports compute
+    auto itr = std::find_if(queueFamilies.begin(), queueFamilies.end(),
+        [](VkQueueFamilyProperties&amp; props) {
+            return (props.queueFlags &amp; VK_QUEUE_COMPUTE_BIT);
+        }
+    );
+    if (itr == queueFamilies.end()) {
+        throw std::runtime_error(&quot;No compute queue family&quot;);
+    }
+    return std::distance(queueFamilies.begin(), itr);
+}
+</code></pre>
+<h3 id="creating-a-physical-device"><a class="header" href="#creating-a-physical-device">Creating a physical device</a></h3>
+<pre><code class="language-cpp">// Find queue family with compute capability.
+queueFamilyIndex = getComputeQueueFamilyIndex(physicalDevice);
+// Device queue info
+VkDeviceQueueCreateInfo queueCreateInfo = {
+    .queueFamilyIndex = queueFamilyIndex,
+    .queueCount = 1 // create one queue in this family. We don't need more.
+};
+// Device info
+VkDeviceCreateInfo deviceCreateInfo = {
+    .queueCreateInfoCount = 1,
+    .pQueueCreateInfos = &amp;queueCreateInfo
+};
+
+VK_CHECK_RESULT(vkCreateDevice(
+    physicalDevice, &amp;deviceCreateInfo, nullptr, &amp;device
+)); // create logical device.
+
+// Get handle to queue 0 in `queueFamilyIndex` queue family
+vkGetDeviceQueue(device, queueFamilyIndex, 0, &amp;queue);
+</code></pre>
+<h2 id="creating-a-buffer"><a class="header" href="#creating-a-buffer">Creating a buffer</a></h2>
+<p>This section refers to:</p>
+<ul>
+<li><code>Utility::createBuffer</code></li>
+<li><code>Utility::findMemoryType</code></li>
+</ul>
+<p>For a shader to interact with data we need something to hold data, for this we use buffers, they are generic collections, much like an array.</p>
+<p>Defining our buffer and its memory requires more quite a bit more than what you may expect of effectively instantiating an array.</p>
+<p>In our code we:</p>
+<ol>
+<li>Create a buffer</li>
+<li>Allocate &amp; bind memory</li>
+</ol>
+<h3 id="creating-a-buffer-1"><a class="header" href="#creating-a-buffer-1">Creating a buffer</a></h3>
+<pre><code class="language-cpp">// Buffer info
+VkBufferCreateInfo bufferCreateInfo = {
+    // buffer size in bytes.
+    .size = sizeof(float)*size,
+    // buffer is used as a storage buffer (and is thus accessible in a shader).
+    .usage = VK_BUFFER_USAGE_STORAGE_BUFFER_BIT,
+    // buffer is exclusive to a single queue family at a time. 
+    .sharingMode = VK_SHARING_MODE_EXCLUSIVE
+};
+
+// Constructs buffer
+VK_CHECK_RESULT(vkCreateBuffer(device, &amp;bufferCreateInfo, nullptr, buffer));
+</code></pre>
+<h3 id="allocating--binding-memory"><a class="header" href="#allocating--binding-memory">Allocating &amp; binding memory</a></h3>
+<p>We get the memory requirements of our buffer and set the size of the memory to allocate.</p>
+<pre><code class="language-cpp">// Gets buffer memory size and offset
+VkMemoryRequirements memoryRequirements;
+vkGetBufferMemoryRequirements(device, *buffer, &amp;memoryRequirements);
+
+// Memory info
+VkMemoryAllocateInfo allocateInfo = {
+    .allocationSize = memoryRequirements.size  // Size in bytes
+};
+</code></pre>
+<p>To get the type of memory to allocate we loop through available memory until we find memory of our required type and desired properties.</p>
+<pre><code class="language-cpp">allocateInfo.memoryTypeIndex = findMemoryType(
+    physicalDevice,
+    // Specifies memory types supported for the buffer
+    memoryRequirements.memoryTypeBits,
+    // Sets memory must have the properties:
+    //  `VK_MEMORY_PROPERTY_HOST_COHERENT_BIT` Easily view
+    //  `VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT` Read from GPU to CPU
+    VK_MEMORY_PROPERTY_HOST_COHERENT_BIT | VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT
+);
+</code></pre>
+<ul>
+<li><code>memoryRequirements.memoryTypeBits</code> specifies the memory types our buffer supports and thus the memory we choose must be within this.</li>
+<li><code>VK_MEMORY_PROPERTY_HOST_COHERENT_BIT | VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT</code> specifies properties we require in the memory and thus the memory we choose must include these properties.</li>
+</ul>
+<pre><code class="language-cpp">uint32_t Utility::findMemoryType(
+    VkPhysicalDevice const&amp; physicalDevice, 
+    uint32_t const memoryTypeBits, 
+    VkMemoryPropertyFlags const properties
+) {
+    VkPhysicalDeviceMemoryProperties memoryProperties;
+    vkGetPhysicalDeviceMemoryProperties(physicalDevice, &amp;memoryProperties);
+
+   // Iterate through memory types available on our physical device
+    for (uint32_t i = 0; i &lt; memoryProperties.memoryTypeCount; ++i) {
+        // If our resource supports a memory type, and
+        //  a memory type contains all required properties, then
+        //  return the index of this memory type
+        if (
+            // Check resource (buffer) supports this memory type
+            (memoryTypeBits &amp; (1 &lt;&lt; i)) &amp;&amp;
+            // Check all required properties are supported by this memory type.
+            //  `x&amp;y==y` &lt;=&gt; `x contains y` &lt;=&gt; `All 1 bits in y are 1 bits in x`
+            //  &lt;=&gt; All features of `properties` are in `memoryTypes[i].propertyFlags`
+            ((memoryProperties.memoryTypes[i].propertyFlags &amp; properties)==properties)
+        ) {
+            return i;
+        }
+    }
+    return -1;
+}
+</code></pre>
+<p>We then allocate and bind memory as such:</p>
+<pre><code class="language-cpp">// Allocates memory
+VK_CHECK_RESULT(vkAllocateMemory(device, &amp;allocateInfo, nullptr, bufferMemory));
+
+// Binds allocated memory to buffer
+VK_CHECK_RESULT(vkBindBufferMemory(device, *buffer, *bufferMemory, 0));
+</code></pre>
+<h2 id="filling-a-buffer"><a class="header" href="#filling-a-buffer">Filling a buffer</a></h2>
+<p>This section refers to:</p>
+<ul>
+<li><code>Utility::fillBuffer</code></li>
+</ul>
+<p>To set the values of buffer.</p>
+<pre><code class="language-cpp">void* data = nullptr;
+// Maps buffer memory into RAM
+vkMapMemory(device, bufferMemory, 0, VK_WHOLE_SIZE, 0, &amp;data);
+// Fills buffer memory
+memcpy(data, bufferData, static_cast&lt;size_t&gt;(bufferSize * sizeof(float)));
+// Un-maps buffer memory from RAM to device memory
+vkUnmapMemory(device, bufferMemory);
+</code></pre>
+<h2 id="creating-a-descriptor-set-layout"><a class="header" href="#creating-a-descriptor-set-layout">Creating a descriptor set layout</a></h2>
+<p>This section refers to:</p>
+<ul>
+<li><code>Utility::createDescriptorSetLayout</code></li>
+</ul>
+<blockquote>
+<p>'Whoa! Wait a second, what even is a descriptor set?'</p>
+</blockquote>
+<p>You may be saying...</p>
+<p>Simply: descriptor sets define how shaders access buffers.</p>
+<p>Before defining a descriptor set (which defines specific access) we define its layout, this defines less specific things, like how many buffers we have (well, rather how many entries for buffer descriptors we have).</p>
+<p>Before jumping straight into this it's worth covering some basic ideas about buffers in GLSL, in affect, buffers are just structures holding some data, for example:</p>
+<pre><code class="language-glsl">layout(binding = 0) buffer Buffer {
+    uint x[];
+    float y;
+    // ...
+};
+</code></pre>
+<p>They have a specific binding (here defined as <code>binding = 0</code>) which corresponds to a specific buffer (or set of buffers). These bindings can also be defined as arrays:</p>
+<pre><code class="language-glsl">layout(binding = 0) buffer Buffer {
+    uint x[];
+    float y;
+    // ...
+} buffers[3];
+</code></pre>
+<p>Such that there are 3 objects of this structures accessed as <code>buffers[i]</code>.</p>
+<p>Without specifying it defaults to <code>buffers[1]</code>.</p>
+<p>In creating our descriptor set layout:</p>
+<ul>
+<li><code>VkDescriptorSetLayoutBinding::binding</code> defines <code>binding = 0</code></li>
+<li><code>VkDescriptorSetLayoutBinding::descriptorCount</code> defines <code> buffers[n]</code>, specifically in this case with <code>VkDescriptorSetLayoutBinding::descriptorCount=1</code> it defines it as <code>buffers[1]</code>, which means we can write our GLSL without specifying an array size (like the 1st GLSL binding).</li>
+</ul>
+<pre><code class="language-cpp">VkDescriptorSetLayoutBinding binding = {
+    // `layout(binding = 0)`
+    .binding = 0,
+    .descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+    // Specifies the number buffers of a binding
+    //  `layout(binding=0) buffer Buffer { uint x[]; }` or
+    //   `layout(binding=0) buffer Buffer { uint x[]; } buffers[1]` would equal 1
+    //
+    //  `layout(binding=0) buffer Buffer { uint x[]; } buffers[3]` would equal 3,
+    //   in affect saying we have 3 buffers of the same format (`buffers[0].x` etc.).
+    .descriptorCount = 1,
+    .stageFlags = VK_SHADER_STAGE_COMPUTE_BIT
+};
+// Descriptor set layout options
+VkDescriptorSetLayoutCreateInfo descriptorSetLayoutCreateInfo = {
+    // `bindingCount` specifies length of `pBindings` array, in this case 1.
+    .bindingCount = 1,
+    // array of `VkDescriptorSetLayoutBinding`s
+    .pBindings = &amp;binding
+};
+
+// Create the descriptor set layout. 
+VK_CHECK_RESULT(vkCreateDescriptorSetLayout(
+    device, &amp;descriptorSetLayoutCreateInfo, nullptr, descriptorSetLayout
+));
+
+</code></pre>
+<h2 id="creating-a-descriptor-set"><a class="header" href="#creating-a-descriptor-set">Creating a descriptor set</a></h2>
+<p>This section refers to:</p>
+<ul>
+<li><code>Utility::createDescriptorSet</code></li>
+</ul>
+<p>Quite a bit of code, but all relatively simple.</p>
+<p>We create 2 things:</p>
+<ol>
+<li>Descriptor pool.</li>
+<li>Descriptor set.</li>
+</ol>
+<h3 id="descriptor-pool"><a class="header" href="#descriptor-pool">Descriptor pool</a></h3>
+<p>A descriptor pool specifies a number of descriptors of each type, and when we create our descriptor set it pulls a number of descriptors of each type from our descriptor pool.</p>
+<p>A descriptor set is initialized to contain the number of descriptors defined the given descriptor set layout, therefore our pool size must be more than or equal to the number of descriptors defined in our descriptor set layout.</p>
+<p><code>VK_DESCRIPTOR_TYPE_STORAGE_BUFFER</code> is the standard buffer type for most compute operations.</p>
+<pre><code class="language-cpp">// Descriptor type and number
+VkDescriptorPoolSize descriptorPoolSize = {
+    .type = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+    .descriptorCount = 1 // Number of descriptors
+};
+// Creates descriptor pool
+// A pool allocates a number of descriptors of each type
+VkDescriptorPoolCreateInfo descriptorPoolCreateInfo = {
+    .maxSets = 1, // max number of sets that can be allocated from this pool
+    .poolSizeCount = 1, // length of `pPoolSizes`
+    .pPoolSizes = &amp;descriptorPoolSize // pointer to array of `VkDescriptorPoolSize`
+};
+// create descriptor pool.
+VK_CHECK_RESULT(vkCreateDescriptorPool(
+    device, &amp;descriptorPoolCreateInfo, nullptr, descriptorPool
+));
+</code></pre>
+<h3 id="descriptor-set"><a class="header" href="#descriptor-set">Descriptor set</a></h3>
+<p>Allocates 1 descriptor set from pool.</p>
+<pre><code class="language-cpp">// Specifies options for creation of multiple of descriptor sets
+VkDescriptorSetAllocateInfo descriptorSetAllocateInfo = {
+    // pool from which sets will be allocated
+    .descriptorPool = *descriptorPool, 
+    // number of descriptor sets to implement (length of `pSetLayouts`)
+    .descriptorSetCount = 1,
+    // pointer to array of descriptor set layouts
+    .pSetLayouts = descriptorSetLayout 
+};
+// allocate descriptor set.
+VK_CHECK_RESULT(vkAllocateDescriptorSets(
+    device, &amp;descriptorSetAllocateInfo, &amp;descriptorSet
+));
+</code></pre>
+<p>Binds our 1 descriptor to our 1 buffer.</p>
+<pre><code class="language-cpp">// Defines buffer binding
+VkDescriptorBufferInfo binding = {
+    .buffer = buffer,
+    .offset = 0,
+    .range = VK_WHOLE_SIZE // set to whole size of buffer
+};
+
+// Binds descriptors from descriptor sets to buffers
+VkWriteDescriptorSet writeDescriptorSet = {
+    // write to this descriptor set.
+    .dstSet = descriptorSet,
+    // update 1 descriptor respective set (we only have 1).
+    .descriptorCount = 1,
+    // buffer type.
+    .descriptorType = VK_DESCRIPTOR_TYPE_STORAGE_BUFFER,
+    // respective buffer.
+    .pBufferInfo = &amp;binding
+};
+
+// perform the update of the descriptor set.
+vkUpdateDescriptorSets(device, 1, &amp;writeDescriptorSet, 0, nullptr);
+</code></pre>
+<h2 id="creating-a-compute-pipeline"><a class="header" href="#creating-a-compute-pipeline">Creating a compute pipeline</a></h2>
+<p>This section refers to:</p>
+<ul>
+<li><code>Utility::createComputePipeline</code></li>
+<li><code>Utility::readShader</code></li>
+</ul>
+<p>Compute pipelines control how computations are performed.</p>
+<p>In our code we:</p>
+<ol>
+<li>Create a shader</li>
+<li>Create a pipeline layout</li>
+<li>Create a compute pipeline</li>
+</ol>
+<h3 id="shader"><a class="header" href="#shader">Shader</a></h3>
+<p>We read the length and bytes of our <code>.spv</code> file (<code>vulkan-012/glsl/012.spv</code>).</p>
+<pre><code class="language-cpp"> // (length, bytes in `uint32_t`s)
+auto [fileLength, fileBytes] = readShader(shaderFile);
+VkShaderModuleCreateInfo createInfo = {
+    .codeSize = fileLength,
+    .pCode = fileBytes
+};
+VK_CHECK_RESULT(
+    vkCreateShaderModule(device, &amp;createInfo, nullptr, computeShaderModule
+));
+</code></pre>
+<h3 id="pipeline-layout"><a class="header" href="#pipeline-layout">Pipeline layout</a></h3>
+<p>Pipeline layouts define what types of resources can be accessed by a given pipeline, more specifically the set of resources that can be accessed from shaders of a given pipeline. Created from descriptor set layouts and push constant ranges.</p>
+<p>While we can link a pipeline to multiple descriptor sets, we only require the 1 we have for now.</p>
+<pre><code class="language-cpp">VkPipelineLayoutCreateInfo pipelineLayoutCreateInfo = {
+    .setLayoutCount = 1, // 1 descriptor set
+    .pSetLayouts = descriptorSetLayout // the 1 descriptor set
+};
+VK_CHECK_RESULT(vkCreatePipelineLayout(
+    device, &amp;pipelineLayoutCreateInfo, nullptr, pipelineLayout
+));
+</code></pre>
+<h3 id="pipeline-creation"><a class="header" href="#pipeline-creation">Pipeline creation</a></h3>
+<pre><code class="language-cpp">// We specify the compute shader stage, and it's entry point(main).
+VkPipelineShaderStageCreateInfo shaderStageCreateInfo = {
+    .stage = VK_SHADER_STAGE_COMPUTE_BIT, // Shader type
+    .module = *computeShaderModule, // Shader module
+    .pName = &quot;main&quot; // Shader entry point
+};
+
+// Set our pipeline options
+VkComputePipelineCreateInfo pipelineCreateInfo = {
+    .stage = shaderStageCreateInfo,
+    .layout = *pipelineLayout
+};
+
+// Create compute pipeline
+VK_CHECK_RESULT(vkCreateComputePipelines(
+    device, VK_NULL_HANDLE,
+    1, &amp;pipelineCreateInfo,
+    nullptr, pipeline
+));
+</code></pre>
+<h2 id="creating-a-command-buffer"><a class="header" href="#creating-a-command-buffer">Creating a command buffer</a></h2>
+<p>This section refers to:</p>
+<ul>
+<li><code>Utility::createCommandBuffer</code></li>
+</ul>
+<p>It is via command buffers that we submit operations to the device.</p>
+<p>In our code we:</p>
+<ol>
+<li>Create the command pool</li>
+<li>Allocate the command buffer</li>
+<li>Dispatch &amp; bind the command buffer</li>
+</ol>
+<h3 id="command-pool"><a class="header" href="#command-pool">Command pool</a></h3>
+<p>Command pools are objects from which command buffers acquire memory, they can specify some parameters about the usage of command buffers allocated from them via <code>VkCommandPoolCreateInfo::flags</code>.</p>
+<p>In our case this part is extremely simple:</p>
+<pre><code class="language-cpp">// Creates command pool
+VkCommandPoolCreateInfo commandPoolCreateInfo = {
+    .sType = VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO,
+    .queueFamilyIndex = queueFamilyIndex // Sets queue family
+};
+VK_CHECK_RESULT(vkCreateCommandPool(
+    device, &amp;commandPoolCreateInfo, nullptr, commandPool
+));
+</code></pre>
+<h3 id="command-buffer-allocation"><a class="header" href="#command-buffer-allocation">Command buffer allocation</a></h3>
+<p>Commands buffers record commands that are later submitted to queues where they execute.</p>
+<p>There are 2 level of command buffers:</p>
+<ol>
+<li><code>VK_COMMAND_BUFFER_LEVEL_PRIMARY</code>: Which can be directly submitted and can call secondary command buffers.</li>
+<li><code>VK_COMMAND_BUFFER_LEVEL_PRIMARY</code>: Which cannot be directly submitted and only called via primary buffers.</li>
+</ol>
+<p>For this simple circumstance we want 1 command buffer we can directly submit.</p>
+<pre><code class="language-cpp">// Allocates command buffer
+VkCommandBufferAllocateInfo commandBufferAllocateInfo = {
+    .sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO,
+    .commandPool = *commandPool,  // Pool to allocate from
+    .level = VK_COMMAND_BUFFER_LEVEL_PRIMARY,
+    .commandBufferCount = 1  // Allocates 1 command buffer. 
+};
+VK_CHECK_RESULT(vkAllocateCommandBuffers(
+    device, &amp;commandBufferAllocateInfo, commandBuffer
+));
+</code></pre>
+<h3 id="command-buffer-dispatch--binding"><a class="header" href="#command-buffer-dispatch--binding">Command buffer dispatch &amp; binding</a></h3>
+<p>To use our command allocated buffers we must bind various resources and specify parameters of operations, this can be thought of as recording these into our command buffers.</p>
+<p>Each command buffer must be recorded individually, in our case we only have 1 so it somewhat simplifies the process.</p>
+<p>Commands are recorded into the command buffer between <code>vkBeginCommandBuffer()</code>
+and <code>vkEndCommandBuffer()</code>, it cannot be submitted before we finish recording  by calling <code>vkEndCommandBuffer()</code>.</p>
+<pre><code class="language-cpp">// Allocated command buffer options
+VkCommandBufferBeginInfo beginInfo = {
+    .sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO,
+    // Buffer only submitted once
+    .flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT
+};
+// Start recording commands
+VK_CHECK_RESULT(vkBeginCommandBuffer(*commandBuffer, &amp;beginInfo));
+
+// Binds pipeline (our functions)
+vkCmdBindPipeline(*commandBuffer, VK_PIPELINE_BIND_POINT_COMPUTE, pipeline);
+// Binds descriptor set (our data)
+vkCmdBindDescriptorSets(
+    *commandBuffer, VK_PIPELINE_BIND_POINT_COMPUTE, 
+    pipelineLayout, 0, 1, &amp;descriptorSet, 0, nullptr
+);
+</code></pre>
+<p>Set number of workgroups. If we need 1050 x invocations and our workgroup x size is 1024 (<code>layout(local_size_x = 1024, local_size_y = 1, local_size_z = 1) in;</code>) we need to dispatch with at least 2 workgroup. Thus with <code>dims</code> being the number of invocations we need <code>[x,y,z]</code> and <code>dimLengths</code> being our workgroup size <code>[x,y,z]</code> we set the number of workgroups we need as such:</p>
+<pre><code class="language-cpp">// Sets invocations
+vkCmdDispatch(
+    *commandBuffer,
+    ceil(dims[0] / static_cast&lt;float&gt;(dimLengths[0])),
+    ceil(dims[1] / static_cast&lt;float&gt;(dimLengths[1])),
+    ceil(dims[2] / static_cast&lt;float&gt;(dimLengths[2]))
+);
+</code></pre>
+<p>When we finish recording, our buffer is in an executable state and can be submitted.</p>
+<p>Recording commands do not report errors, if they
+occur, they are reported by the <code>vkEndCommandBuffer()</code>.</p>
+<p>To finish recording we call <code>vkEndCommandBuffer()</code>.</p>
+<pre><code class="language-cpp">// End recording commands
+VK_CHECK_RESULT(vkEndCommandBuffer(*commandBuffer));
+</code></pre>
+<h2 id="running-a-command-buffer"><a class="header" href="#running-a-command-buffer">Running a command buffer</a></h2>
+<p>This section refers to:</p>
+<ul>
+<li><code>Utility::runCommandBuffer</code></li>
+</ul>
+<p>In our code we:</p>
+<ol>
+<li>Create a fence.</li>
+<li>Submit our command buffer.</li>
+<li>Wait for our fence to trigger.</li>
+<li>Destroy our fence.</li>
+</ol>
+<h3 id="fences-vs-semaphores"><a class="header" href="#fences-vs-semaphores">Fences Vs Semaphores</a></h3>
+<p>Fences synchronize command buffers with our application (e.g. waiting for our command buffer to finish execution).</p>
+<p>Semaphores synchronize command buffers with each other (e.g. ensuring command buffers execute in specific order).</p>
+<p>Here we only need a fence.</p>
+<h3 id="creating-a-fence"><a class="header" href="#creating-a-fence">Creating a fence</a></h3>
+<p>We use a fence to await our command buffer to complete its execution after we submit it.</p>
+<p>A basic fence can be very easily created.</p>
+<pre><code class="language-cpp">// Creates fence (so we can await for command buffer to finish)
+VkFence fence;
+VkFenceCreateInfo fenceCreateInfo = {};
+VK_CHECK_RESULT(vkCreateFence(device, &amp;fenceCreateInfo, nullptr, &amp;fence));
+</code></pre>
+<h3 id="submitting-our-command-buffer"><a class="header" href="#submitting-our-command-buffer">Submitting our command buffer</a></h3>
+<p>A little bit more complex we need to specify the command buffers we are submitting and the associated fence that will signal the completion of their execution.</p>
+<pre><code class="language-cpp">// Command buffer submit info
+VkSubmitInfo submitInfo = {
+    // submit 1 command buffer
+    .commandBufferCount = 1,
+    // pointer to array of command buffers to submit
+    .pCommandBuffers = commandBuffer
+};
+// Submit command buffer with fence
+VK_CHECK_RESULT(vkQueueSubmit(queue, 1, &amp;submitInfo, fence));
+</code></pre>
+<h3 id="waiting-for-our-fence-to-trigger"><a class="header" href="#waiting-for-our-fence-to-trigger">Waiting for our fence to trigger</a></h3>
+<pre><code class="language-cpp">// Wait for fence to signal (which it does when command buffer has finished)
+VK_CHECK_RESULT(vkWaitForFences(device, 1, &amp;fence, VK_TRUE, 100000000000));
+</code></pre>
+<h3 id="destroy-our-fence"><a class="header" href="#destroy-our-fence">Destroy our fence</a></h3>
+<pre><code class="language-cpp">// Destructs fence
+vkDestroyFence(device, fence, nullptr);
+</code></pre>
+<h2 id="reading-a-buffer"><a class="header" href="#reading-a-buffer">Reading a buffer</a></h2>
+<p>This section refers to:</p>
+<ul>
+<li><code>Utility::map</code></li>
+</ul>
+<p>Much like how we fill a buffer except we do not unmap our buffer (in our use case we do not need to reuse it).</p>
+<pre><code class="language-cpp">void* data = nullptr;
+vkMapMemory(device, bufferMemory, 0, VK_WHOLE_SIZE, 0, &amp;data);
+return data;
+</code></pre>
+<h2 id="testing"><a class="header" href="#testing">Testing</a></h2>
+<p>Well that was a hell of a 'Hello World!' program.</p>
+<p>Now we can finally write a simple test.</p>
+<pre><code class="language-cpp">const uint32_t WORKGROUP_SIZE = 1024;
+
+TEST(Boilerplate, ten) {
+    uint32_t const size = 10;
+    char const shader[] = &quot;../../glsl/012.spv&quot;;
+    ComputeApp app = ComputeApp(
+        shader,
+        size, // Buffer sizes
+        new float[size], // Buffer data
+        new uint32_t[3]{ size,1,1 }, // Invocations
+        new uint32_t[3]{ WORKGROUP_SIZE,1,1 } // Workgroup sizes
+    );
+    uint32_t* out = static_cast&lt;uint32_t*&gt;(Utility::map(app.device,app.bufferMemory));
+    for(uint32_t i = 0; i &lt; size; ++i) {
+        ASSERT_EQ(i,out[i]);
+    }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
